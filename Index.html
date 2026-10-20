@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020711">
+<meta name="description" content="Jimuel Salgado Paras - Computer Programming Student Portfolio">
+<title>Jimuel Salgado Paras | CP Portfolio</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  background: #020711;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 35px 25px;
+  border: 1px solid #168cff;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #07172d, #030813, #0b2141);
+  box-shadow: 0 0 30px #007bff22;
+}
+
+.glow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: -130px;
+  left: calc(50% - 130px);
+  background: #078bff;
+  filter: blur(85px);
+  opacity: .55;
+  animation: pulse 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  animation: enter 1s ease both;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 45px;
+}
+
+.logo {
+  color: #58ceff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: white;
+}
+
+.nav-label {
+  color: #9fcaff;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 25px;
+}
+
+.hello {
+  color: #68d7ff;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  line-height: 1.12;
+  margin: 0;
+}
+
+h1 span {
+  color: #50caff;
+  text-shadow: 0 0 20px #168bff88;
+}
+
+.role {
+  color: #9fcaff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  margin: 18px 0;
+}
+
+.description {
+  max-width: 480px;
+  color: #d4e7ff;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.avatar {
+  width: 170px;
+  height: 170px;
+  margin: auto;
+  border: 3px solid #40caff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #103f7c, #061126);
+  box-shadow: 0 0 25px #078bff;
+  animation: float 3s ease-in-out infinite;
+}
+
+.avatar img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  font-size: 48px;
+  font-weight: bold;
+  color: #70d7ff;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  color: #edf7ff;
+  font-size: 12px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #102a4b, #071426);
+  border: 1px solid #215e9c;
+  transition: .25s;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: translateY(-3px);
+  border-color: #51caff;
+  box-shadow: 0 0 20px #087bff66;
+}
+
+.btn.primary {
+  color: #001126;
+  background: linear-gradient(90deg, #39caff, #91e5ff, #39a8ff);
+  border: none;
+}
+
+.section {
+  margin-top: 50px;
+}
+
+.section-title {
+  color: #70d7ff;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.about {
+  padding: 22px;
+  border: 1px solid #167cff77;
+  border-radius: 16px;
+  background: #0a1c35aa;
+  color: #d4e7ff;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.skill {
+  padding: 20px 12px;
+  text-align: center;
+  border: 1px solid #215e9c;
+  border-radius: 14px;
+  background: #08182d;
+  transition: .25s;
+}
+
+.skill:hover {
+  border-color: #50caff;
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px #078bff33;
+}
+
+.skill-icon {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.skill h3 {
+  font-size: 13px;
+  color: #70d7ff;
+  margin: 0 0 8px;
+}
+
+.skill p {
+  font-size: 11px;
+  color: #b7d3f5;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.project {
+  padding: 20px;
+  border: 1px solid #215e9c;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0b1d35, #050d1b);
+}
+
+.project h3 {
+  color: #70d7ff;
+  margin-top: 0;
+}
+
+.project p {
+  color: #d4e7ff;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.project-tag {
+  display: inline-block;
+  margin: 4px 5px 0 0;
+  padding: 6px 9px;
+  border: 1px solid #215e9c;
+  border-radius: 20px;
+  color: #8fdaff;
+  font-size: 10px;
+}
+
+.contact-box {
+  padding: 22px;
+  text-align: center;
+  border: 1px solid #167cff77;
+  border-radius: 16px;
+  background: #0a1c35aa;
+}
+
+.contact-box h2 {
+  color: #70d7ff;
+  font-size: 22px;
+}
+
+.contact-box p {
+  color: #d4e7ff;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.footer {
+  margin-top: 35px;
+  text-align: center;
+  color: #70caff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  line-height: 2;
+}
+
+.particle {
+  position: absolute;
+  z-index: 0;
+  color: #63d5ff;
+  animation: drift 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.p1 { top: 15%; left: 5%; }
+.p2 { top: 28%; right: 5%; animation-delay: 1s; }
+.p3 { top: 55%; left: 4%; animation-delay: 2s; }
+.p4 { top: 78%; right: 5%; animation-delay: 1.5s; }
+
+@keyframes pulse {
+  from { opacity: .25; transform: scale(.8); }
+  to { opacity: .7; transform: scale(1.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drift {
+  from { transform: translateY(12px); opacity: .3; }
+  to { transform: translateY(-15px); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 24px 18px;
+  }
+
+  .navbar {
+    margin-bottom: 35px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .avatar {
+    grid-row: 1;
+    width: 135px;
+    height: 135px;
+  }
+
+  .initials {
+    font-size: 40px;
+  }
+
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section {
+    margin-top: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="card">
+
+  <div class="glow"></div>
+  <span class="particle p1">✦</span>
+  <span class="particle p2">✧</span>
+  <span class="particle p3">✦</span>
+  <span class="particle p4">✧</span>
+
+  <div class="content">
+
+    <nav class="navbar">
+      <div class="logo">&lt;JP<span>/&gt;</span></div>
+      <div class="nav-label">CP STUDENT PORTFOLIO</div>
+    </nav>
+
+    <section class="hero" id="home">
+
+      <div>
+        <div class="hello">✦ HELLO, WORLD! ✦</div>
+
+        <h1>
+          I'm Jimuel<br>
+          <span>Salgado Paras</span>
+        </h1>
+
+        <p class="role">
+          COMPUTER PROGRAMMING STUDENT<br>
+          FUTURE DEVELOPER · TECH ENTHUSIAST
+        </p>
+
+        <p class="description">
+          Welcome to my digital portfolio! I'm passionate about
+          technology, programming, and building creative digital
+          experiences. I'm continuously learning and improving
+          my coding skills one project at a time.
+        </p>
+
+        <div class="buttons">
+          <a class="btn primary" href="#projects">⌘ VIEW MY PROJECTS</a>
+          <a class="btn" href="#contact">✉ CONTACT ME</a>
+        </div>
+      </div>
+
+      <div class="avatar">
+        <img id="profilePhoto" alt="Jimuel Salgado Paras">
+        <span class="initials" id="initials">JP</span>
+      </div>
+
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-title">01 / ABOUT ME</div>
+
+      <div class="about">
+        Hi! I'm Jimuel, a Computer Programming student who enjoys
+        exploring software development, learning new technologies,
+        and solving problems through code. My goal is to develop
+        useful, user-friendly applications and continue growing
+        as a programmer.
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-title">02 / MY TECH STACK</div>
+
+      <div class="skills">
+
+        <div class="skill">
+          <div class="skill-icon">💻</div>
+          <h3>HTML & CSS</h3>
+          <p>Web page structure and styling</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">⚡</div>
+          <h3>JavaScript</h3>
+          <p>Interactive web experiences</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">🐘</div>
+          <h3>PHP & MySQL</h3>
+          <p>Server-side and database basics</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">📱</div>
+          <h3>Flutter & Dart</h3>
+          <p>Mobile app development</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">🔥</div>
+          <h3>Firebase</h3>
+          <p>Backend services and data</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">🛠️</div>
+          <h3>Problem Solving</h3>
+          <p>Debugging and logical thinking</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-title">03 / FEATURED PROJECT</div>
+
+      <div class="project">
+        <h3>🚀 TourVia</h3>
+
+        <p>
+          A mobile-based tour management and assistance application
+          for tourists and tour guides in the Philippines. It is
+          designed to support tour coordination, itinerary management,
+          attendance, location tracking, and communication.
+        </p>
+
+        <span class="project-tag">Flutter</span>
+        <span class="project-tag">Dart</span>
+        <span class="project-tag">Firebase</span>
+        <span class="project-tag">Mapbox</span>
+        <span class="project-tag">Mobile Development</span>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-title">04 / LET'S CONNECT</div>
+
+      <div class="contact-box">
+        <h2>Let's Build Something! 💙</h2>
+
+        <p>
+          Have an idea, project, or opportunity?<br>
+          Feel free to reach out and connect with me.
+        </p>
+
+        <div class="buttons" style="justify-content:center;">
+
+          <a class="btn primary"
+             href="mailto:jimuelparas3151@gmail.com">
+            ✉ EMAIL ME
+          </a>
+
+          <a class="btn" href="tel:+639123149682">
+            ☎ CALL ME
+          </a>
+
+          <a class="btn"
+             href="https://m.me/cruozs"
+             target="_blank" rel="noopener noreferrer">
+            ◉ MESSENGER
+          </a>
+
+          <a class="btn"
+             href="https://www.facebook.com/cruozs"
+             target="_blank" rel="noopener noreferrer">
+            f FACEBOOK
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &lt; CODE · CREATE · INNOVATE /&gt;<br>
+      © 2026 JIMUEL SALGADO PARAS
+    </footer>
+
+  </div>
+</div>
+</div>
+
+<script>
+// OPTIONAL PROFILE PHOTO
+// Put your photo file in the same folder as this HTML file.
+// Change "profile.jpg" to your exact photo filename.
+
+const photo = document.getElementById("profilePhoto");
+const initials = document.getElementById("initials");
+
+photo.src = "profile.jpg";
+
+photo.onload = function () {
+  photo.style.display = "block";
+  initials.style.display = "none";
+};
+
+photo.onerror = function () {
+  photo.style.display = "none";
+  initials.style.display = "block";
+};
+</script>
+
+</body>
+  </html>
